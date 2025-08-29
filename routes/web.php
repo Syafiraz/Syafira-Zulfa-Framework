@@ -17,26 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::get('/users/{id}', action: function(int $id): string {
+Route::get('/users/{id}', function(int $id): string {
     return "Ini halaman user dengan ID: $id";
-});
+})->where('id', '[0-9]+')->name('users');
 
-route::get(uri: '/about', action: function(): string {
+Route::get('/about', function(): string {
     return "Ini halaman about";
-})->name(name: 'about');
+})->name('about');
 
-route::get(uri: '/contact', action: function(): string {
+Route::get('/contact', function(): string {
     return "Ini halaman contact";
-})->name(name: 'contact');
+})->name('contact');
 
-route::prefix('manage')->group(callback: function (): void {
+Route::prefix('manage')->name('manage.')->group(function () {
 
-    route::get(uri:'/edit', action: function(): string {
+    Route::get('/edit', function(): string {
         return "Ini halaman manage/edit";
-    });
+    })->name('edit');
 
-    route::get(uri: '/barang', action: function(): string{
-        return "ini halaman manage barang";
-    });
+    Route::get('/barang', function(): string {
+        return "Ini halaman manage/barang";
+    })->name('barang');
 
 });
