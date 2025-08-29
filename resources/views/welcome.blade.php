@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>hello</h1>
+    <a href="{{ route('contact') }}">Contact</a>
+    <a href="{{ route('about') }}">About</a>
 </body>
 </html>
