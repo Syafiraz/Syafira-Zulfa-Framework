@@ -41,4 +41,20 @@ Route::middleware(['auth', 'role:admin,owner'])->group(function () {
     Route::get('/produk/{angka}', [ProductController::class, 'index'])->name('product.index');
 });
 
+Route::get('/utama', function () {
+    return view('utama');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
+
+Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
+
+Route::middleware(['auth', 'role:admin,owner'])->group(function () {
+    Route::get('/produk/{angka}', [ProductController::class, 'index'])->name('product.index');
+});
+
 require __DIR__ .'/auth.php';

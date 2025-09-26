@@ -1,0 +1,114 @@
+/* --- Konfigurasi Tema & Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --background-color: #121826; /* Biru dongker/abu-abu sangat gelap */
+    --container-bg: #1a2233;   /* Warna kontainer yang sedikit lebih terang */
+    --text-color: #c7d2fe;       /* Teks putih kebiruan, nyaman di mata */
+    --heading-color: #ffffff;
+    --accent-color: #a3e635;      /* Hijau limau neon sebagai aksen */
+    --accent-hover: #84cc16;
+}
+
+/* --- Reset & Gaya Dasar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    padding: 2rem;
+    /* Efek background gradasi halus */
+    background-image: radial-gradient(circle at 1% 1%, rgba(163, 230, 53, 0.1), rgba(0,0,0,0) 30%);
+}
+
+/* --- Judul & Heading --- */
+h1, h2, h3 {
+    text-align: center;
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+/* Efek gradient pada judul utama */
+h1 {
+    font-size: 2.8rem;
+    background: linear-gradient(90deg, var(--accent-color), var(--heading-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+/* --- Navigasi --- */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Navigasi transparan */
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(199, 210, 254, 0.2); /* Garis bawah halus */
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Efek 'glowing' saat hover */
+nav a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(163, 230, 53, 0.7);
+}
+
+/* Indikator link aktif dengan garis bawah */
+nav a.active {
+    color: var(--accent-color);
+}
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+
+/* --- Kontainer Utama --- */
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--container-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(199, 210, 254, 0.2);
+    /* Bayangan 'glowing' yang halus */
+    box-shadow: 0 0 25px rgba(163, 230, 53, 0.1);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(163, 230, 53, 0.15);
+}

@@ -1,9 +1,20 @@
 <html>
-    <head>
-        <title>Menu Utama</title>
-    </head>
-    <body>
-        @yield('judul_menu')
+<head>
+    <title>Halaman Utama</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+    <h1>Selamat Datang di Halaman Utama</h1>
+    @yield('judul_menu')
+    <nav>
+        <a href="/barang">Barang</a> |
+        <a href="/produk">Produk</a>
+    </nav>
+    <div class="container">
         @yield('isi_menu')
-    </body>
+    </div>
+    <p>
+        ayo balap well
+    </p>
+</body>
 </html>
