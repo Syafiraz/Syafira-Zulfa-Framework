@@ -33,13 +33,13 @@ Route::get('/rahasia', function (){
     return 'ini halaman rahasia';
 })->middleware('auth', 'RoleCheck:admin');
 
-Route::get('/produk',[ProductController::class, 'index']);
+//Route::get('/produk',[ProductController::class, 'index']);
 
 Route::get('/route_count/{id}', [ProductController::class, 'show']);
 
-Route::middleware(['auth', 'role:admin,owner'])->group(function () {
-    Route::get('/produk/{angka}', [ProductController::class, 'index'])->name('product.index');
-});
+// Route::middleware(['auth', 'role:admin,owner'])->group(function () {
+//     Route::get('/produk/{angka}', [ProductController::class, 'index'])->name('product.index');
+// });
 
 Route::get('/utama', function () {
     return view('utama');
@@ -49,12 +49,6 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
-
-Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
-
-Route::middleware(['auth', 'role:admin,owner'])->group(function () {
-    Route::get('/produk/{angka}', [ProductController::class, 'index'])->name('product.index');
-});
+Route::get('/produk/{id}', [ProductController::class, 'show']);
 
 require __DIR__ .'/auth.php';

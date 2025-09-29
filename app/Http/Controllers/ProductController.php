@@ -36,9 +36,23 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($id)
     {
-        return view('barang', ['isi_data' => $id]);
+        if ($id % 2 != 0) {
+            // Jika ganjil
+            $pesan = "Nilai " . $id . " ini adalah ganjil";
+            $alertType = "warning";
+        } else {
+            // Jika genap
+            $pesan = "Nilai " . $id . " ini adalah genap";
+            $alertType = "success";
+        }
+
+        // Lempar data ke view 'produk.show'
+        return view('produk.show', [
+        'pesan' => $pesan,
+        'alertType' => $alertType
+    ]);
     }
 
     /**
