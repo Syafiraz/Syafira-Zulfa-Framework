@@ -14,7 +14,7 @@
 <body>
 
     <header>
-        <h1>HEADER WEBSITE</h1>
+        <h1>HEADER WEBSITE UTS</h1>
     </header>
 
     <main>
@@ -23,7 +23,7 @@
     </main>
 
     <footer>
-        <p>FOOTER WEBSITE - &copy; 2024</p>
+        <p>FOOTER WEBSITE UTS - &copy; 2024</p>
     </footer>
 
 </body>

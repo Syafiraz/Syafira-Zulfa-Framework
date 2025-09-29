@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UtsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -52,5 +53,8 @@ Route::get('/home', function () {
 Route::get('/produk/{id}', [ProductController::class, 'show']);
 
 Route::get('/uts', [UtsController::class, 'index']);
+
+Route::get('/uts/pemrograman-web', [UtsController::class, 'pemrogramanWeb']);
+Route::get('/uts/database', [UtsController::class, 'database']);
 
 require __DIR__ .'/auth.php';
