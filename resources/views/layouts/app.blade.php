@@ -1,36 +1,30 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek UTS</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; }
+        header { background-color: #f1f1f1; padding: 20px; text-align: center; border-bottom: 1px solid #ccc; }
+        main { padding: 20px; min-height: 70vh; }
+        footer { background-color: #333; color: white; padding: 15px; text-align: center; }
+    </style>
+</head>
+<body>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <header>
+        <h1>HEADER WEBSITE</h1>
+    </header>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <main>
+        {{-- Bagian BODY (konten dinamis) akan ditempatkan di sini --}}
+        @yield('content')
+    </main>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <footer>
+        <p>FOOTER WEBSITE - &copy; 2024</p>
+    </footer>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+</body>
 </html>
