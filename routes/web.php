@@ -51,4 +51,8 @@ Route::get('/home', function () {
 
 Route::get('/produk/{id}', [ProductController::class, 'show']);
 
+Route::get('/uts', function () {
+    return 'Halaman UTS berhasil dibuat.';
+});
+
 require __DIR__ .'/auth.php';
