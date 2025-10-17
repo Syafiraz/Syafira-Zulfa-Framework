@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($angka)
+    public function index()
     {
-         $hasil = $angka + 10;
+        $data = Product::all();
+        return view('master-data.product-master.index-product', compact('data'));
+        //  $hasil = $angka + 10;
 
-        // lempar ke view
-        return view('manage.index', compact('hasil'));
+        // // lempar ke view
+        // return view('manage.index', compact('hasil'));
     }
 
     /**
@@ -22,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('master-data.product-master.create-product');
     }
 
     /**
@@ -30,7 +33,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validasi_data = $request->validate([
+        'product_name' => 'required|string|max:255',
+        'unit' => 'required|string|max:50',
+        'type' => 'required|string|max:50',
+        'information' => 'nullable|string',
+        'qty' => 'required|integer',
+        'producer' => 'required|string|max:255',
+    ]);
+
+    // Proses simpan data ke dalam database
+    Product::create($validasi_data);
+
+    return redirect()->back()->with('success', 'Product created successfully!');
     }
 
     /**
@@ -60,7 +75,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('master-data.product-master.edit-product', compact('product'));
     }
 
     /**
@@ -68,7 +84,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'product_name' => 'required|string|max:255',
+            'unit' => 'required|string|max:50',
+            'type' => 'required|string|max:50',
+            'information' => 'nullable|string',
+            'qty' => 'required|integer',
+            'producer' => 'required|string|max:255',
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->update([
+            'product_name' => $request->product_name,
+            'unit' => $request->unit,
+            'type' => $request->type,
+            'information' => $request->information,
+            'qty' => $request->qty,
+            'producer' => $request->producer,
+        ]);
+        return redirect()->back()->with('success', 'Product updated successfully!');
     }
 
     /**
@@ -76,6 +110,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Product::findOrFail($id);
+        $data->delete();
+        return redirect()->back()->with('success', 'Product deleted successfully!');
     }
 }
